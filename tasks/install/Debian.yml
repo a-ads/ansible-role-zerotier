@@ -33,7 +33,7 @@
     setup: ~
 
   when:
-    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "LinuxMint"
     - ansible_facts['distribution_major_version'] == "19" or ansible_facts['distribution_major_version'] == "20"
     - release_repo.status == 404
 
