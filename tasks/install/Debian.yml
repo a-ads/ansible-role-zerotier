@@ -39,7 +39,7 @@
   when:
     - ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Linux Mint"
     - ansible_facts['distribution_major_version'] == "19" or ansible_facts['distribution_major_version'] == "20"
-    - release_repo.status == 404
+ #   - release_repo.status == 404
 
 - name: Add ZeroTier APT repository
   apt_repository:
