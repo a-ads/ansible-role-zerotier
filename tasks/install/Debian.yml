@@ -10,12 +10,12 @@
     - ansible_facts['distribution'] == "Ubuntu"
   register: release_repo
 
-- name: Print the gateway for each host when defined
+- name: Print distribution version
   ansible.builtin.debug:
-    msg: Distro {{ ansible_facts['distribution'] }} Major {{ ansible_facts['distribution_major_version'] }}
+    msg: Distribution is {{ ansible_facts['distribution'] }}, Major version is {{ ansible_facts['distribution_major_version'] }}
 
 - block:
-  - name: Overwrite Ubuntu release repo name
+  - name: Overwrite Ubuntu release repo name to bionic for 18.x
     set_fact:
       zerotier_deb_release_repo: bionic
 
@@ -29,7 +29,7 @@
 
 # a kludge needed cause there's no repo for ubuntu focal yet
 - block:
-  - name: Overwrite Ubuntu release repo name to disco for focal and disco
+  - name: Overwrite Ubuntu release repo name to disco for Ubuntu and Linux Mint 19.x and 20.x
     set_fact:
       zerotier_deb_release_repo: disco
 
