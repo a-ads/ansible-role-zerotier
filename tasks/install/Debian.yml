@@ -10,6 +10,10 @@
     - ansible_facts['distribution'] == "Ubuntu"
   register: release_repo
 
+- name: Print the gateway for each host when defined
+  ansible.builtin.debug:
+    msg: Distro {{ ansible_facts['distribution'] }} Major {{ ansible_facts['distribution_major_version'] }}
+
 - block:
   - name: Overwrite Ubuntu release repo name
     set_fact:
