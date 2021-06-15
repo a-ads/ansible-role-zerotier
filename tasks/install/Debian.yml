@@ -14,18 +14,18 @@
   ansible.builtin.debug:
     msg: Distribution is {{ ansible_facts['distribution'] }}, Major version is {{ ansible_facts['distribution_major_version'] }}
 
-- block:
-  - name: Overwrite Ubuntu release repo name to bionic for 18.x
-    set_fact:
-      zerotier_deb_release_repo: bionic
+# - block:
+#   - name: Overwrite Ubuntu release repo name to bionic for 18.x
+#     set_fact:
+#       zerotier_deb_release_repo: bionic
 
-  - name: Re-gather facts
-    setup: ~
+#   - name: Re-gather facts
+#     setup: ~
 
-  when:
-    - ansible_facts['distribution'] == "Ubuntu"
-    - ansible_facts['distribution_major_version'] == "18"
-    - release_repo.status == 404
+#   when:
+#     - ansible_facts['distribution'] == "Ubuntu"
+#     - ansible_facts['distribution_major_version'] == "18"
+#     - release_repo.status == 404
 
 # a kludge needed cause there's no repo for ubuntu focal yet
 - block:
